@@ -1090,6 +1090,7 @@ MonoBehaviour:
   prefab: {fileID: 107398672333617949, guid: f3ca6f5cde6b24015a783ceb64311e1b, type: 3}
   parentSpawn: {fileID: 75699250}
   countMosquitoes: 5
+  timeSpawn: 2
   spawnPoints:
   - {fileID: 1961101012}
   - {fileID: 1691548345}

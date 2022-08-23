@@ -11,7 +11,9 @@ namespace MosquitoesScripts
         [SerializeField] private GameObject prefab;
         [SerializeField] private GameObject parentSpawn;
         [SerializeField] private int countMosquitoes;
+        [SerializeField] private float timeSpawn;
         [SerializeField] private GameObject[] spawnPoints;
+
 
         public bool IsFoolListMosquitoes { get; private set; }
 
@@ -33,7 +35,7 @@ namespace MosquitoesScripts
 
         private void SpawnMosquitoes()
         {
-            Observable.Timer(TimeSpan.FromSeconds(3))
+            Observable.Timer(TimeSpan.FromSeconds(timeSpawn))
                 .Repeat()
                 .Subscribe(_ =>
                 {
