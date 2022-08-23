@@ -8,9 +8,9 @@ namespace MosquitoesScripts
 {
     public class MosquitoMoving : MonoBehaviour
     {
-        private Vector3 _min;
-        private Vector3 _max;
-        private Vector3 _movePoint;
+        private Vector3 _min, 
+                        _max, 
+                        _movePoint;
 
         private float _changeDirectionTime;
 
@@ -25,10 +25,7 @@ namespace MosquitoesScripts
         private void Start()
         {
             this.UpdateAsObservable()
-                .Subscribe(_ =>
-                {
-                    Moving();
-                }).AddTo(this);
+                .Subscribe(_ => { Moving(); }).AddTo(this);
         }
 
 
