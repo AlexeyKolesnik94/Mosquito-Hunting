@@ -1,3 +1,4 @@
+using UI.ScoreScripts;
 using UI.TimerScripts;
 using Zenject;
 
@@ -5,18 +6,15 @@ namespace Common
 {
     public class UIInstaller : MonoInstaller
     {
-        public Timer timer;
-        
         public override void InstallBindings()
         {
-            TimerBind();
+            ScoreBind();
         }
 
-        private void TimerBind()
+        private void ScoreBind()
         {
             Container
-                .Bind<Timer>()
-                .FromInstance(timer)
+                .Bind<Score>()
                 .AsSingle()
                 .NonLazy();
         }

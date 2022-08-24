@@ -333,6 +333,7 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 390298287}
+  - {fileID: 390298290}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -377,7 +378,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 352cfc702063446b9a8096548d64ddaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: {fileID: 1994285121}
 --- !u!1 &411922831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,8 +1103,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 107398672333617949, guid: f3ca6f5cde6b24015a783ceb64311e1b, type: 3}
   parentSpawn: {fileID: 75699250}
-  countMosquitoes: 5
-  timeSpawn: 2
+  countMosquitoes: 25
+  timeSpawn: 1
   spawnPoints:
   - {fileID: 1961101012}
   - {fileID: 1691548345}
@@ -1377,9 +1377,9 @@ RectTransform:
   m_Father: {fileID: 73405760}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1220, y: -114}
+  m_AnchorMin: {x: 0.7692569, y: 0.48246753}
+  m_AnchorMax: {x: 0.7692569, y: 0.48246753}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1327.2, y: 1327.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &999128980
@@ -1402,7 +1402,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: a1b4a149206e94f019dbc01493c49f14, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1583,6 +1583,7 @@ GameObject:
   - component: {fileID: 1231453511}
   - component: {fileID: 1231453513}
   - component: {fileID: 1231453512}
+  - component: {fileID: 1231453514}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -1630,7 +1631,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 9
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -1639,8 +1640,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280418048
-  m_fontColor: {r: 0, g: 1, b: 0.1309495, a: 1}
+    rgba: 4294908672
+  m_fontColor: {r: 0, g: 0.10661459, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1707,6 +1708,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1231453510}
   m_CullTransparentMesh: 1
+--- !u!114 &1231453514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231453510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5394f97a9d9e41ae9424145b1fcfc532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1295224017
 GameObject:
   m_ObjectHideFlags: 0
@@ -2689,8 +2702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e85a8baf119c48c2b99cfd5f43f6131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameTime:
-    value: 10
+  gameTime: 20
 --- !u!1 &2004498408
 GameObject:
   m_ObjectHideFlags: 0

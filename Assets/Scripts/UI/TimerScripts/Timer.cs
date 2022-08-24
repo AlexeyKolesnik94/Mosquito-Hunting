@@ -9,7 +9,7 @@ namespace UI.TimerScripts
 {
     public class Timer : MonoBehaviour
     {
-        public FloatReactiveProperty gameTime = new FloatReactiveProperty();
+        [SerializeField] private float gameTime;
         
         private TextMeshProUGUI _text;
         private MosquitoesSpawner _spawner;
@@ -24,7 +24,7 @@ namespace UI.TimerScripts
         private void Start()
         {
             _text = GetComponent<TextMeshProUGUI>();
-            _text.text = gameTime.Value.ToString();
+            _text.text = gameTime.ToString();
 
             this.UpdateAsObservable()
                 .Subscribe(_ => { GameTimer(); }).AddTo(this);
@@ -32,14 +32,14 @@ namespace UI.TimerScripts
 
         private void GameTimer()
         {
-            if (gameTime.Value <= 0)
+            if (gameTime <= 0)
             {
-                gameTime.Value = 0;
+                gameTime = 0;
                 _spawner.isSpawn.Value = false;
             }
             
-            gameTime.Value -= Time.deltaTime;
-            _text.text = Mathf.Round(gameTime.Value).ToString();
+            gameTime -= Time.deltaTime;
+            _text.text = Mathf.Round(gameTime).ToString();
         }
     }
 }
