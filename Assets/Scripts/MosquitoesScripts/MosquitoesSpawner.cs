@@ -13,14 +13,15 @@ namespace MosquitoesScripts
         [SerializeField] private int countMosquitoes;
         [SerializeField] private float timeSpawn;
         [SerializeField] private GameObject[] spawnPoints;
-
-
+        
         public bool IsFoolListMosquitoes { get; private set; }
 
         private DiContainer _container;
 
         [HideInInspector]
         public IntReactiveProperty mosquitoesCounts = new IntReactiveProperty();
+        [HideInInspector]
+        public BoolReactiveProperty isSpawn = new BoolReactiveProperty(true);
 
         [Inject]
         private void Construct(DiContainer diContainer)
@@ -39,7 +40,7 @@ namespace MosquitoesScripts
                 .Repeat()
                 .Subscribe(_ =>
                 {
-                    if (mosquitoesCounts.Value < countMosquitoes)
+                    if (mosquitoesCounts.Value < countMosquitoes && isSpawn.Value)
                     {
                         int rand = Random.Range(0, spawnPoints.Length - 1);
                         
