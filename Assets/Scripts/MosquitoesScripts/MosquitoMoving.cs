@@ -13,17 +13,19 @@ namespace MosquitoesScripts
                         _movePoint;
 
         private float _changeDirectionTime;
+        private SpriteRenderer _sprite;
 
         private void Awake()
         {
             _changeDirectionTime = Random.Range(0.5f, 2f);
-            
+
             ScreenBorders();
             RandomPoint();
         }
 
         private void Start()
         {
+            _sprite = GetComponent<SpriteRenderer>();
             this.UpdateAsObservable()
                 .Subscribe(_ => { Moving(); }).AddTo(this);
         }
@@ -35,8 +37,11 @@ namespace MosquitoesScripts
             _max = Camera.main.ViewportToWorldPoint(new Vector3(1f, 1f, Camera.main.nearClipPlane));
         }
 
-        private void Moving() => 
+        private void Moving()
+        {
             transform.position = Vector3.MoveTowards(transform.position, _movePoint, 0.01f);
+            
+        }
 
         private void RandomPoint()
         {
@@ -44,6 +49,7 @@ namespace MosquitoesScripts
                 .Repeat()
                 .Subscribe(_ =>
                 {
+                    _sprite.flipX = Vector3.Normalize(_movePoint).x > 0;
                     _movePoint.x = Random.Range(_min.x, _max.x);
                     _movePoint.y = Random.Range(_min.y, _max.y);
                 }).AddTo(this);

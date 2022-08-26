@@ -8,6 +8,6 @@ namespace UI.ScoreScripts
         private Score _scoreScript;
 
         public void AddScore() => 
-            score.Value++;
+            score.Value += 120;
     }
 }
