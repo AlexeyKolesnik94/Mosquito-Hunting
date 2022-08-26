@@ -1,3 +1,4 @@
+using UI.PauseMenu;
 using UI.ScoreScripts;
 using UI.TimerScripts;
 using Zenject;
@@ -13,6 +14,15 @@ namespace Common
         {
             ScoreBind();
             TimerBind();
+            PauseBind();
+        }
+
+        private void PauseBind()
+        {
+            Container
+                .Bind<Pause>()
+                .AsSingle()
+                .NonLazy();
         }
 
         private void TimerBind()

@@ -1,5 +1,6 @@
 using System;
 using MosquitoesScripts;
+using UI.PauseMenu;
 using UI.TimerScripts;
 using UniRx;
 using UnityEngine;
@@ -12,14 +13,14 @@ namespace UI
         [SerializeField] private Canvas pauseCanvas;
         [SerializeField] private Canvas endGameCanvas;
 
-        private MosquitoesSpawner _spawner;
+        private Pause _pause;
         private Timer _timer;
 
         [Inject]
-        private void Construct(MosquitoesSpawner spawner, Timer timer)
+        private void Construct(Pause pause, Timer timer)
         {
             _timer = timer;
-            _spawner = spawner;
+            _pause = pause;
         }
 
         private void Start()
@@ -30,6 +31,20 @@ namespace UI
                     if (!_timer.isTimerOff.Value) return;
                     endGameCanvas.gameObject.SetActive(true);
                     Debug.Log(_timer.isTimerOff);
+                }).AddTo(this);
+
+            _pause.IsPaused
+                .Subscribe(_ =>
+                {
+                    switch (_pause.IsPaused.Value)
+                    {
+                        case true:
+                            pauseCanvas.gameObject.SetActive(true);
+                            break;
+                        case false:
+                            pauseCanvas.gameObject.SetActive(false);
+                            break;
+                    }
                 }).AddTo(this);
         }
     }
