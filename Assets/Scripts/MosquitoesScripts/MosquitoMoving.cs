@@ -49,9 +49,9 @@ namespace MosquitoesScripts
                 .Repeat()
                 .Subscribe(_ =>
                 {
-                    _sprite.flipX = Vector3.Normalize(_movePoint).x > 0;
                     _movePoint.x = Random.Range(_min.x, _max.x);
                     _movePoint.y = Random.Range(_min.y, _max.y);
+                    _sprite.flipX = Vector3.Normalize(_movePoint).x >= 0;
                 }).AddTo(this);
         }
     }

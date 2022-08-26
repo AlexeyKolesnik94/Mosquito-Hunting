@@ -14,7 +14,8 @@ namespace UI.TimerScripts
         private TextMeshProUGUI _text;
         private MosquitoesSpawner _spawner;
 
-
+        public BoolReactiveProperty isTimerOff = new BoolReactiveProperty(false);
+        
         [Inject]
         private void Construct(MosquitoesSpawner spawner)
         {
@@ -35,6 +36,7 @@ namespace UI.TimerScripts
             if (gameTime <= 0)
             {
                 gameTime = 0;
+                isTimerOff.Value = true;
                 _spawner.isSpawn.Value = false;
             }
             

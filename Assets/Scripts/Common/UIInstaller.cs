@@ -6,9 +6,22 @@ namespace Common
 {
     public class UIInstaller : MonoInstaller
     {
+
+        public Timer timer;
+        
         public override void InstallBindings()
         {
             ScoreBind();
+            TimerBind();
+        }
+
+        private void TimerBind()
+        {
+            Container
+                .Bind<Timer>()
+                .FromInstance(timer)
+                .AsSingle()
+                .NonLazy();
         }
 
         private void ScoreBind()
