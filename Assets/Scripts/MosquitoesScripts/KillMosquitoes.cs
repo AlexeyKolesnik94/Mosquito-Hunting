@@ -29,6 +29,7 @@ namespace MosquitoesScripts
         public void OnPointerClick(PointerEventData eventData)
         {
             _animator.Play(Death);
+            Debug.Log("kill");
         }
 
         public void Killing()

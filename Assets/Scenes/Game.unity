@@ -3853,7 +3853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e85a8baf119c48c2b99cfd5f43f6131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameTime: 20
+  gameTime: 45
   isTimerOff:
     value: 0
 --- !u!1 &2004498408
