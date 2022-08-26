@@ -1,4 +1,5 @@
 using System;
+using UI.PauseMenu;
 using UniRx;
 using UnityEngine;
 using Zenject;
@@ -17,6 +18,7 @@ namespace MosquitoesScripts
         public bool IsFoolListMosquitoes { get; private set; }
 
         private DiContainer _container;
+        private Pause _pause;
 
         [HideInInspector]
         public IntReactiveProperty mosquitoesCounts = new IntReactiveProperty();
@@ -24,9 +26,10 @@ namespace MosquitoesScripts
         public BoolReactiveProperty isSpawn = new BoolReactiveProperty(true);
 
         [Inject]
-        private void Construct(DiContainer diContainer)
+        private void Construct(DiContainer diContainer, Pause pause)
         {
             _container = diContainer;
+            _pause = pause;
         }
 
         private void Start()
@@ -40,7 +43,7 @@ namespace MosquitoesScripts
                 .Repeat()
                 .Subscribe(_ =>
                 {
-                    if (mosquitoesCounts.Value < countMosquitoes && isSpawn.Value)
+                    if (mosquitoesCounts.Value < countMosquitoes && isSpawn.Value && !_pause.IsPaused.Value)
                     {
                         int rand = Random.Range(0, spawnPoints.Length - 1);
                         

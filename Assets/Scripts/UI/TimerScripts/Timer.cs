@@ -1,5 +1,6 @@
 using MosquitoesScripts;
 using TMPro;
+using UI.PauseMenu;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -13,13 +14,15 @@ namespace UI.TimerScripts
         
         private TextMeshProUGUI _text;
         private MosquitoesSpawner _spawner;
+        private Pause _pause;
 
         public BoolReactiveProperty isTimerOff = new BoolReactiveProperty(false);
         
         [Inject]
-        private void Construct(MosquitoesSpawner spawner)
+        private void Construct(MosquitoesSpawner spawner, Pause pause)
         {
             _spawner = spawner;
+            _pause = pause;
         }
         
         private void Start()
@@ -39,9 +42,12 @@ namespace UI.TimerScripts
                 isTimerOff.Value = true;
                 _spawner.isSpawn.Value = false;
             }
-            
-            gameTime -= Time.deltaTime;
-            _text.text = Mathf.Round(gameTime).ToString();
+
+            if (!_pause.IsPaused.Value)
+            {
+                gameTime -= Time.deltaTime;
+                _text.text = Mathf.Round(gameTime).ToString();
+            }
         }
     }
 }
