@@ -10,16 +10,15 @@ namespace MosquitoesScripts
 {
     public class MosquitoMoving : MonoBehaviour
     {
+        [SerializeField] private float speed;
+        
         private Vector3 _min, 
                         _max, 
                         _movePoint;
         private float _changeDirectionTime;
         private SpriteRenderer _sprite;
         private Pause _pause;
-        private Animator _animator;
         
-        private static readonly int Fly = Animator.StringToHash("Fly");
-        private static readonly int IdleAnim = Animator.StringToHash("IdleAnim");
 
         [Inject]
         private void Construct(Pause pause)
@@ -37,7 +36,6 @@ namespace MosquitoesScripts
 
         private void Start()
         {
-            _animator = GetComponent<Animator>();
             _sprite = GetComponent<SpriteRenderer>();
             this.UpdateAsObservable()
                 .Subscribe(_ => { Moving(); }).AddTo(this);
@@ -53,7 +51,8 @@ namespace MosquitoesScripts
         private void Moving()
         {
             if (_pause.IsPaused.Value) return;
-            transform.position = Vector3.MoveTowards(transform.position, _movePoint, 0.01f);
+            
+            transform.position = Vector3.MoveTowards(transform.position, _movePoint, speed * Time.deltaTime);
         }
 
         private void RandomPoint()
