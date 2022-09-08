@@ -52,7 +52,8 @@ namespace MosquitoesScripts
         {
             if (_pause.IsPaused.Value) return;
             
-            transform.position = Vector3.MoveTowards(transform.position, _movePoint, speed * Time.deltaTime);
+            transform.position = 
+                Vector3.MoveTowards(transform.position, _movePoint, speed * Time.deltaTime);
         }
 
         private void RandomPoint()

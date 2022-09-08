@@ -2969,6 +2969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseCanvas: {fileID: 0}
+  mosquitoesContainer: {fileID: 0}
 --- !u!1 &1449617889
 GameObject:
   m_ObjectHideFlags: 0
@@ -4012,6 +4013,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseCanvas: {fileID: 1449617892}
+  mosquitoesContainer: {fileID: 75699250}
 --- !u!1001 &9213710268753578515
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,7 +7,6 @@ namespace UI.SceneTransition
 {
     public class SceneTransition : MonoBehaviour
     {
-        public TextMeshProUGUI LoadingPercentage;
         public Image LoadingProgressBar;
     
         private static SceneTransition instance;
@@ -48,7 +47,7 @@ namespace UI.SceneTransition
         {
             if (loadingSceneOperation != null)
             {
-                LoadingPercentage.text = Mathf.RoundToInt(loadingSceneOperation.progress * 100) + "%";
+                //LoadingPercentage.text = Mathf.RoundToInt(loadingSceneOperation.progress * 100) + "%";
                 
                 LoadingProgressBar.fillAmount = Mathf.Lerp(LoadingProgressBar.fillAmount, loadingSceneOperation.progress,
                     Time.deltaTime * 5);

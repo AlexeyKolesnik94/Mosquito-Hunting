@@ -1,14 +1,12 @@
-using MosquitoesScripts;
 using UniRx;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using Zenject;
 
 namespace UI.PauseMenu.Button
 {
     public class RestartBtn : MonoBehaviour
     {
         [SerializeField] private Canvas pauseCanvas;
+        [SerializeField] private GameObject mosquitoesContainer;
         
         private UnityEngine.UI.Button _restartBtn;
         private const string sceneName = "Game";
@@ -23,6 +21,7 @@ namespace UI.PauseMenu.Button
                 {
                     SceneTransition.SceneTransition.SwitchToScene(sceneName);
                     pauseCanvas.gameObject.SetActive(false);
+                    mosquitoesContainer.SetActive(false);
                 }).AddTo(this);
         }
     }
